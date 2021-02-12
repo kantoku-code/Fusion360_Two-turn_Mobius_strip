@@ -1,5 +1,5 @@
 #Author-kantoku
-#Description-Two-turn Möbius strip
+#Description-Two-turn Mobius strip
 #Fusion360API Python
 
 import adsk.core
@@ -9,7 +9,7 @@ from ..apper import apper
 from .. import config
 from .ktkCmdInputHelper import SelectionCommandInputHelper, IntegerSpinnerCommandInputHelper
 from .ktkCmdInputHelper import TextBoxCommandInputHelper, ValueCommandInputHelper
-from .MöbiusStripFactry import MöbiusStripFactry
+from .MobiusStripFactry import MobiusStripFactry
 from .ktkLanguageMessage import LangMsg
 
 msgDict = {
@@ -59,7 +59,7 @@ _info = TextBoxCommandInputHelper(
     10,
     True)
 
-class MöbiusStripCore(apper.Fusion360CommandBase):
+class MobiusStripCore(apper.Fusion360CommandBase):
 
     def on_preview(self, command, inputs, args, input_values):
         global _point, _twist, _hole, _thick
@@ -74,7 +74,7 @@ class MöbiusStripCore(apper.Fusion360CommandBase):
         if not all(checkLst):
             return
 
-        MöbiusStripFactry.previewMöbiusStrip(
+        MobiusStripFactry.previewMobiusStrip(
             _point.obj.selection(0).entity,
             _twist.obj.value,
             _hole.obj.value
@@ -119,7 +119,7 @@ class MöbiusStripCore(apper.Fusion360CommandBase):
     def on_execute(self, command, inputs, args, input_values):
         global _point, _twist, _hole, _thick
         thick = _thick.obj.value * 0.5
-        MöbiusStripFactry.createMöbiusStrip(
+        MobiusStripFactry.createMobiusStrip(
             _point.obj.selection(0).entity,
             _twist.obj.value,
             _hole.obj.value,

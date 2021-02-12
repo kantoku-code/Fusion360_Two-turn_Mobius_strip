@@ -1,5 +1,5 @@
 #Author-kantoku
-#Description-Two-turn Möbius strip
+#Description-Two-turn Mobius strip
 #Fusion360API Python
 
 import adsk.core
@@ -16,16 +16,16 @@ def run(context):
         app = adsk.core.Application.get()
         ui = app.userInterface
 
-        MöbiusStripFactry.unitTest()
+        MobiusStripFactry.unitTest()
 
     except:
         if ui:
             ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
 
-class MöbiusStripFactry:
+class MobiusStripFactry:
 
     @staticmethod
-    def createMöbiusStrip(
+    def createMobiusStrip(
         center :adsk.fusion.SketchPoint,
         twistCount :int,
         holeCount :int,
@@ -39,22 +39,22 @@ class MöbiusStripFactry:
         basePnt = adsk.core.Point3D.create(holeCount * 0.25, 0, 0)
 
         # sweep
-        sweeps = [MöbiusStripFactry._initSweep(basePnt, twistCount, ang) for ang in rotations]
+        sweeps = [MobiusStripFactry._initSweep(basePnt, twistCount, ang) for ang in rotations]
 
         if _debug:
             trims = sweeps
         else:
             # sphere
-            spheres = [MöbiusStripFactry._initSphere(basePnt, ang, holeCount) for ang in rotations]
+            spheres = [MobiusStripFactry._initSphere(basePnt, ang, holeCount) for ang in rotations]
 
             # trim
-            trims = [MöbiusStripFactry._initTrim(sw,sps) for sw, sps in zip(sweeps, spheres)]
+            trims = [MobiusStripFactry._initTrim(sw,sps) for sw, sps in zip(sweeps, spheres)]
 
         # create BaseFeature
-        baseBodies = MöbiusStripFactry._createBaseFeature(trims)
+        baseBodies = MobiusStripFactry._createBaseFeature(trims)
 
         # get Matrix
-        sktMat :adsk.core.Matrix3D = MöbiusStripFactry._getSketchPointMatrix(center)
+        sktMat :adsk.core.Matrix3D = MobiusStripFactry._getSketchPointMatrix(center)
         mat :adsk.core.Matrix3D = sktMat.copy()
 
         # create occurrence
@@ -63,10 +63,10 @@ class MöbiusStripFactry:
         root :adsk.fusion.Component = des.rootComponent
         occ :adsk.fusion.Occurrence = root.occurrences.addNewComponent(
             adsk.core.Matrix3D.create())
-        occ.component.name = 'Two-turn Möbius strip'
+        occ.component.name = 'Two-turn Mobius strip'
 
         # thickenBody
-        MöbiusStripFactry._createThickenBody(
+        MobiusStripFactry._createThickenBody(
             baseBodies,
             adsk.core.ValueInput.createByReal(thick * 0.5),
             occ.component,
@@ -81,7 +81,7 @@ class MöbiusStripFactry:
             return None
 
     @staticmethod
-    def previewMöbiusStrip(
+    def previewMobiusStrip(
         center :adsk.fusion.SketchPoint,
         twistCount :int,
         holeCount :int,
@@ -94,14 +94,14 @@ class MöbiusStripFactry:
         basePnt = adsk.core.Point3D.create(holeCount * 0.25, 0, 0)
 
         # sweep
-        sweeps = [MöbiusStripFactry._initSweep(basePnt, twistCount, ang) for ang in rotations]
+        sweeps = [MobiusStripFactry._initSweep(basePnt, twistCount, ang) for ang in rotations]
 
         # get mat
-        sktMat :adsk.core.Matrix3D = MöbiusStripFactry._getSketchPointMatrix(center)
+        sktMat :adsk.core.Matrix3D = MobiusStripFactry._getSketchPointMatrix(center)
         mat :adsk.core.Matrix3D = sktMat.copy()
 
         # create BaseFeature
-        baseBodies = MöbiusStripFactry._createBaseFeature(sweeps, mat)
+        baseBodies = MobiusStripFactry._createBaseFeature(sweeps, mat)
 
         return baseBodies
 
@@ -412,11 +412,11 @@ class MöbiusStripFactry:
                         pnts.add(
                             pnt3D.create(random.uniform(50, -50), random.uniform(50, -50), 0)))
 
-                MöbiusStripFactry.previewMöbiusStrip(pntLst[0], 5, 23)
+                MobiusStripFactry.previewMobiusStrip(pntLst[0], 5, 23)
                 app.activeViewport.refresh()
                 adsk.doEvents()
 
-                MöbiusStripFactry.createMöbiusStrip(pntLst[1], 1, 17, 0.05)
+                MobiusStripFactry.createMobiusStrip(pntLst[1], 1, 17, 0.05)
                 app.activeViewport.refresh()
                 adsk.doEvents()
         except:

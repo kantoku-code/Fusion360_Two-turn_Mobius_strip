@@ -7,7 +7,7 @@ Create a two-turn Möbius strip.
 
 ***
 ## Installation :
-To install, download/extract the zip file and register the "Two-turn_Möbius_strip" folder as an add-in.
+To install, download/extract the zip file and register the "Two-turn_Mobius_strip" folder as an add-in.
 
 To register an add-in,Please follow the instructions [here](https://knowledge.autodesk.com/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/How-to-install-an-ADD-IN-and-Script-in-Fusion-360.html).
 
@@ -64,7 +64,7 @@ MIT
 
 ***
 ## インストール :
-インストールする際は、zipファイルをダウンロード/展開後 "Two-turn_Möbius_strip" フォルダをアドインとして登録してください。
+インストールする際は、zipファイルをダウンロード/展開後 "Two-turn_Mobius_strip" フォルダをアドインとして登録してください。
 
 アドインの登録は、[こちら](https://knowledge.autodesk.com/ja/support/fusion-360/troubleshooting/caas/sfdcarticles/sfdcarticles/JPN/How-to-install-an-ADD-IN-and-Script-in-Fusion-360.html)の手順に従ってください。
 
